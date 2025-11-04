@@ -1,0 +1,31 @@
+backend:
+  name: github
+  repo: ajikameasane-eng/Website
+  branch: main
+  base_url: https://ane-eng.github.io
+  auth_endpoint: /api/auth
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "stories"
+    label: "Truyện"
+    folder: "stories"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Tiêu đề", name: "title", widget: "string" }
+      - { label: "Ảnh bìa", name: "thumbnail", widget: "image", required: false }
+      - { label: "Nội dung", name: "body", widget: "markdown" }
+
+  - name: "profile"
+    label: "Hồ sơ"
+    files:
+      - file: "data/profile.yml"
+        label: "Thông tin cá nhân"
+        name: "profile"
+        fields:
+          - { label: "Tên", name: "name", widget: "string" }
+          - { label: "Mô tả", name: "bio", widget: "text" }
+          - { label: "Ảnh đại diện", name: "avatar", widget: "image", required: false }
